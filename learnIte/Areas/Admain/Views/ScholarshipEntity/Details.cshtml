@@ -1,0 +1,87 @@
+﻿@model ITE_Project.Dto.Scholarship.ScholarshipDto
+
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="whitebg border">
+    <h2 class="text-info">Scholarship</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            ID
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="ScholarshipId" class="form-control" style="color: #9B54A1; " readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Description
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Description" class="form-control" style="color: #9B54A1; " readonly />
+            </div>
+        </dd>
+        
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Specialize
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Specialize_Name" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            University
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="University.University_Name" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            StartDate
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="StartDate.Date" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            EndDate
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="EndDate.Date" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Level
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Level" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Type
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="type" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+    </dl>
+    <div class="form-group row">
+        <div class="col-5 offset-2">
+            <partial name="_EdaitAndBackToListPartial" model="@Model.ScholarshipId" />
+        </div>
+
+    </div>
+</div>
+
+

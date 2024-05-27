@@ -1,0 +1,79 @@
+﻿@model ITE_Project.Dto.Course.CourseDto
+@using ITE_Project.Dto.Course
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2 class="text-info">Edit Course</h2>
+<br />
+<form asp-action="Edit" method="post" class="col-12">
+    <div class="whitebg border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(m => m.CourseId)
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CourseName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="CourseName" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="corse_descraption" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="corse_descraption" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="corse_descraption" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Language_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Language_Name" class="form-control" style="color: #9B54A1;" asp-items="Html.GetEnumSelectList<Language>()" required>
+                </select><label class="text-info"> Please Choose The Level Of The Course</label>
+                <span asp-validation-for="Language_Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Level_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Level_Name" class="form-control" style="color: #9B54A1;" asp-items="Html.GetEnumSelectList<Level>()" required>
+                </select><label class="text-info"> Choose The Level Of The Course</label>
+                <span asp-validation-for="Level_Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="URLCourse" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="URLCourse" style="color: #9B54A1;" class="form-control" required />
+                <span asp-validation-for="URLCourse" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_UpdateAndBackToListButtonParital" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

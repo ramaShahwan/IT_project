@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MyTables.Entities
+@inject SignInManager<UserEntity> SignInManager
+
+@{
+
+    if (SignInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole(SD.AdmainUser))
+        {
+            Layout = "_Layout";
+        }
+        else
+        {
+            Layout = "_Layout1";
+        }
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+

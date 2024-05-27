@@ -1,0 +1,68 @@
+﻿@model ITE_Project.Dto.University.UniversityDto
+
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="whitebg border">
+    <h2 class="text-info">University</h2>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            ID
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="UniversityId" class="form-control" style="color: #9B54A1; " readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Name
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="University_Name" class="form-control" style="color: #9B54A1; " readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Country
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Country" class="form-control" style="color: #9B54A1; " readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Address
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Address" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Phone
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="Phone" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+        <dt class="col-sm-4" style="color: #730075; font-size: 1.3em; ">
+            Email
+        </dt>
+        <dd class="col-sm-6">
+            <div class="form-group row">
+                <input asp-for="user.Email" class="form-control " style="color: #9B54A1;" readonly />
+            </div>
+        </dd>
+    </dl>
+    <div class="form-group row">
+        <div class="col-5 offset-2">
+            <partial name="_EdaitAndBackToListPartial" model="@Model.UniversityId" />
+        </div>
+
+    </div>
+</div>

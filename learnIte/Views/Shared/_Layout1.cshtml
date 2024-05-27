@@ -1,0 +1,453 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MyTables.Entities
+@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ilearn</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="ilearn project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link href="~/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/footert.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                    <ul class="top_bar_contact_list">
+                                        <li>
+                                            <div class="logo_container">
+                                                <a href="#">
+                                                    <div class="logo_content d-flex flex-row align-items-end justify-content-start">
+                                                        <div class="logo_img"><img src="~/images/logo-(iLearn2).png" alt="" width="40"></div>
+                                                        @*<div class="logo_text">ilearn</div>*@
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li><div class="question">Have any questions?</div></li>
+                                        <li>
+                                            <div>(009) 35475 6688933 32</div>
+                                        </li>
+                                        <li>
+                                            <div>ilearnacademies@gmail.com</div>
+                                        </li>
+                                    </ul>
+                                    <div class="top_bar_login ml-auto">
+                                       
+                                            <partial name="_LoginPartial" />
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper row ">
+                <div class="col-1">
+                    <nav id="sidebar">
+                        <div>
+                            <button type="button" id="sidebarCollapse" class="btn btn-info mt-1">
+                                <i class="fas fa-align-left"></i>
+                                @*<span>Toggle Sidebar</span>*@
+                            </button>
+                        </div>
+                        <div class="sidebar-header">
+                            <h3>iLEARN</h3>
+                            <strong>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+
+                                    @if (UserManager.GetUserAsync(User).Result.profilePicture != null)
+                                    {
+                                        <a asp-area="Identity" asp-page="/Account/Manage/Index"><img width="40" height="40" class="rounded-circle" alt="profile" src="data:image;base64,@System.Convert.ToBase64String(UserManager.GetUserAsync(User).Result.profilePicture)" /></a>
+
+                                    }
+                                    else
+                                    {
+
+                                        <a asp-area="Identity" asp-page="/Account/Manage/Index"><img width="40" height="40" class="rounded-circle" alt="profile" src="~/images/portfolio/profile.jpg" /></a>
+
+                                    }
+                                }
+                            </strong>
+                        </div>
+
+                        <ul class="list-unstyled components">
+                            <li class="active">
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                    <i class="fas fa-home"></i>
+                                    Home
+                                </a>
+                                <ul class="collapse list-unstyled" id="homeSubmenu">
+
+                                    <li><a asp-action="Index" asp-controller="Home" asp-area="">home</a></li>
+                                    <li><a asp-action="Index" asp-controller="Courses" asp-area="">courses</a></li>
+                                    <li><a asp-action="Index" asp-controller="LearnTrackes" asp-area="">learn track</a></li>
+                                    <li><a asp-action="Index" asp-controller="Contact" asp-area="">contact</a></li>
+                                    <li><a asp-action="Index" asp-controller="Scolership" asp-area="">scolership</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                                    Settings
+                                </a>
+                                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                    <i class="fas fa-copy"></i>
+                                    Pages
+                                </a>
+                                @if (User.IsInRole(SD.StudentUser))
+                                {
+                                    <ul class="collapse list-unstyled" id="pageSubmenu">
+
+
+                                        <li>
+                                            <a asp-controller="MyCourses" asp-action="Index" asp-area="">My educational paths</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="MyCourses" asp-action="MyScolership" asp-area="">My Scolerships</a>
+                                        </li>
+
+
+
+                                    </ul>
+                                }
+                                else if (User.IsInRole(SD.UniversityUser))
+                                {
+                                    <ul class="collapse list-unstyled" id="pageSubmenu">
+
+
+                                        <li>
+                                            <a asp-action="Index" asp-controller="ScholarshipManger" asp-area="University">Scholarships</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Index" asp-controller="UserManger" asp-area="University">Students</a>
+                                        </li>
+
+
+
+
+
+                                    </ul>
+                                }
+                            </li>
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+
+                                <li>
+                                    <div class="text-center">
+                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                            <i class="fa fa-sign-out ml-4" aria-hidden="true"></i>
+                                            <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                                        </form>
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
+
+
+                    </nav>
+                </div>
+                <div class="col-12">
+                    <div id="content">
+                        <!-- Header Content -->
+
+                        <div class="header_container " style="margin-left: 30px; ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+
+                                            <nav class="nav main_nav_contaner ml-auto navbar navbar-expand-lg">
+                                                <div class="container-fluid">
+                                                    <ul class="main_nav">
+
+                                                        <li class="active"><a asp-action="Index" asp-controller="Home" asp-area="">home</a></li>
+                                                        <li><a asp-action="Index" asp-controller="Courses" asp-area="">courses</a></li>
+                                                        <li><a asp-action="Index" asp-controller="LearnTrackes" asp-area="">learn track</a></li>
+                                                        <li><a asp-action="Index" asp-controller="Contact" asp-area="">contact</a></li>
+                                                        <li><a asp-action="Index" asp-controller="Scolership" asp-area="">scolership</a></li>
+                                                        @if (User.IsInRole(SD.AdmainUser))
+                                                        {
+                                                            <li class="nav-item dropdown">
+                                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Admain
+                                                                </a>
+                                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="CourseE" asp-area="Admain">Courses</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="OpinionEntities" asp-area="Admain">opinion</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="LearnTrackEntites" asp-area="Admain">LearnTrack</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="ScholarshipEntity" asp-area="Admain">Scholarship</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="UniversityEntities" asp-area="Admain">University</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="UserEntity" asp-area="Admain">User</a>
+
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                        @if (User.IsInRole(SD.UniversityUser))
+                                                        {
+                                                            <li class="nav-item dropdown">
+                                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    University
+                                                                </a>
+                                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="ScholarshipManger" asp-area="University">Scholarships</a>
+                                                                    <a class="dropdown-item" asp-action="Index" asp-controller="UserManger" asp-area="University">Students</a>
+
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+
+                                                    <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                                                    <!-- Hamburger -->
+
+                                                    <div class="hamburger menu_mm">
+                                                        <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </nav>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Header Search Panel -->
+                    </div>
+                </div>
+            </div>
+
+        </header>
+    </div>
+
+
+
+    <!-- Menu -->
+
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li class="menu_mm"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li class="menu_mm"><a asp-action="Index" asp-controller="Courses">Courses</a></li>
+                <li class="menu_mm"><a asp-action="Index" asp-controller="LearnTrackes">LearnTrack</a></li>
+                <li class="menu_mm"><a asp-action="Index" asp-controller="Scolership">Scolership</a></li>
+            </ul>
+        </nav>
+        <div class="menu_extra">
+            <div class="menu_phone"><span class="menu_title">phone:</span>(009) 35475 6688933 32</div>
+            <div class="menu_social">
+                <span class="menu_title">follow us</span>
+                <ul>
+                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+
+    <footer>
+        <div class="footer-nav text-center">
+
+            <div class="container">
+
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Quick menu</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a asp-action="Index" asp-controller="Home" asp-area="" class="footer-nav-link">Home</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a asp-action="Index" asp-controller="Courses" asp-area="" class="footer-nav-link">Courses</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a asp-action="Index" asp-controller="LearnTrackes" asp-area="" class="footer-nav-link">LearnTrackes</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a asp-action="Index" asp-controller="Contact" asp-area="" class="footer-nav-link">Contact us</a>
+                    </li>
+
+
+
+                </ul>
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Our Platform</h2>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Services</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">Team</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">university</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">About us</a>
+                    </li>
+
+
+
+                </ul>
+
+
+                <ul class="footer-nav-list">
+
+                    <li class="footer-nav-item">
+                        <h2 class="nav-title">Contact</h2>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+
+                        <a href="#" class="footer-nav-link"> New York(NY), 14812, USA</a>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+
+                        <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+
+                        <a href="#" class="footer-nav-link">
+                            ilearnacademies@gmail.com
+                        </a>
+                    </li>
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+                <h4 class="text-black-50">Follow Us</h4>
+
+                <ul class="social-link">
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#" class="footer-nav-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="copyright">
+                    Copyright &copy; <a href="#">iLEARN</a> all rights reserved.
+                </p>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/styles/bootstrap4/popper.js"></script>
+    <script src="~/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="~/plugins/greensock/TweenMax.min.js"></script>
+    <script src="~/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="~/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="~/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="~/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/plugins/easing/easing.js"></script>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <script src="~/plugins/video-js/video.min.js"></script>
+    <script src="~/plugins/video-js/Youtube.min.js"></script>
+    <script src="~/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/naving.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/JavaScript.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+﻿@page "{id}"
+@using MyTables.Entity.NewFolder
+@model RegisterModel
+<link rel="stylesheet" href="~/styles/style2.css">
+@{
+    ViewData["Title"] = "Register";
+
+    var reqUrl = Request.HttpContext.Request;
+    //var urlHost = reqUrl.Host;
+    string urlPath = reqUrl.Path;
+    var urlQueryString = reqUrl.Query["id"];
+    int id = urlPath.Last();
+    int t= -1;
+    }
+<body class="img js-fullheight">
+    <div class="maryam">
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Create a new account</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="login-wrap p-0">
+                            <form asp-route-returnUrl="@Model.ReturnUrl" class="signin-form" id="account" method="post">
+                               <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" required />
+                    <span asp-validation-for="Input.Email" style="color: #9B54A1;"></span>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password" required />
+                    <span asp-validation-for="Input.Password" style="color: #9B54A1;"></span>
+                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="ConfirmPassword" required />
+                    <span asp-validation-for="Input.ConfirmPassword" style="color: #9B54A1;"></span>
+                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+                @if (id == 48)
+                {
+                    t = 0;
+            <div class="form-group">
+                <select style="color: #9B54A1; background-color:darkgray" asp-for=@t class="form-control dropdown-toggle" asp-items="Html.GetEnumSelectList<Type_Of>()" required disabled>
+                </select><label asp-for="Input.Type" class="col-form-label"></label>
+                <span asp-validation-for="Input.Type" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.university.University_Name"></label>
+                <input asp-for="Input.university.University_Name" class="form-control" placeholder="name" />
+                <span asp-validation-for="Input.university.University_Name" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.university.Address"></label>
+                <input asp-for="Input.university.Address" class="form-control" placeholder="Address" />
+                <span asp-validation-for="Input.university.Address" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.university.Country"></label>
+                <input asp-for="Input.university.Country" class="form-control" placeholder="Country" />
+                <span asp-validation-for="Input.university.Country" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.university.Phone"></label>
+                <input asp-for="Input.university.Phone" class="form-control" placeholder="Phone" />
+                <span asp-validation-for="Input.university.Phone" style="color: #9B54A1;"></span>
+            </div>
+                }
+                else if (id == 49)
+                {
+                    t = 1;
+
+            <div class="form-group">
+                <select style="color: #9B54A1; background-color: darkgray; "  asp-for="Input.Type" class="form-control dropdown-toggle" asp-items="Html.GetEnumSelectList<Type_Of>()" required>
+                </select><label asp-for="Input.Type" class="col-form-label"></label>
+                <span asp-validation-for="Input.Type" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.FirstName"></label>
+                <input asp-for="Input.student.FirstName" class="form-control" placeholder="First Name" />
+                <span asp-validation-for="Input.student.FirstName" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.LastName"></label>
+                <input asp-for="Input.student.LastName" class="form-control" placeholder="name" />
+                <span asp-validation-for="Input.student.LastName" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.Country"></label>
+                <input asp-for="Input.student.Country" class="form-control" placeholder="Country" />
+                <span asp-validation-for="Input.student.Country" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.Phone"></label>
+                <input asp-for="Input.student.Phone" class="form-control" placeholder="Phone" />
+                <span asp-validation-for="Input.student.Phone " style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.Address"></label>
+                <input asp-for="Input.student.Address" class="form-control" placeholder="Address" />
+                <span asp-validation-for="Input.student.Address" style="color: #9B54A1;"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Input.student.Birthday"></label>
+                <input asp-for="Input.student.Birthday" class="form-control" placeholder="Birthday" />
+                <span asp-validation-for="Input.student.Birthday" style="color: #9B54A1;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.student.Average"></label>
+                <input asp-for="Input.student.Average" class="form-control" placeholder="Average" />
+                <span asp-validation-for="Input.student.Average" style="color: #9B54A1;"></span>
+            </div>*@
+
+
+        }
+
+
+
+
+
+                                @if (User.IsInRole(SD.AdmainUser))
+                                {
+                                    <div class="form-group">
+                                        <label class="form-check-label">
+                                            <input type="radio" value="@SD.StudentUser" name="userrole" checked />@SD.StudentUser
+                                        </label>
+                                        <label class="form-check-label">
+                                            <input type="radio" value="@SD.UniversityUser" name="userrole" />@SD.UniversityUser
+                                        </label>
+                                        <label class="form-check-label">
+                                            <input type="radio" value="@SD.AdmainUser" name="userrole" />@SD.AdmainUser
+                                        </label>
+                                    </div>
+                                }
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/main2.js"></script>
+
+</body>
+
+
+
+
+
+@*<h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                <h4>Use another service to register.</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

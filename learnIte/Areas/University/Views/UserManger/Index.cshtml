@@ -1,0 +1,167 @@
+﻿@model List<ITE_Project.Dto.Std_Scholarship.Std_ScholarshipDto>
+
+<link href="~/css/site.css" rel="stylesheet" />
+<style>
+    .whitebg {
+        width: 1500px;
+    }
+</style>
+
+
+<div class="whitebg border">
+    <div class="row">
+        <div class="col-8">
+
+
+            @if (Model.Count() != 0)
+            {
+                <h3 class="text-info">The name of the university is:<strong>@Model[0].scholarship.University.University_Name</strong> </h3>
+               <p class="text-primary">The number of students who have registered for scholarships offered by <strong>@Model[0].scholarship.University.University_Name</strong> university is: @Model.Count()   </p>
+            }
+        </div>
+        <div class="col-4 text-right">
+           
+        </div>
+    </div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+        <p class="text-danger"> There are no students registered for the scholarships offered..</p>
+        }
+        else
+        {
+
+    <table class="table table-striped border ">
+        <tr class="table-secondary">
+
+
+            <th style="color: #730075; font-size: 1em; ">Description</th>
+            <th style="color: #730075; font-size: 1em; ">scholarship Specialize</th>
+            <th style="color: #730075; font-size: 1em; ">scholarship type</th>
+            <th style="color: #730075; font-size: 1em; ">scholarship Level</th>
+            <th style="color: #730075; font-size: 1em; ">First Name</th>
+            <th style="color: #730075; font-size: 1em; ">Last Name</th>
+            <th style="color: #730075; font-size: 1em; ">Average</th>
+            <th style="color: #730075; font-size: 1em; ">Date log on Scholarship</th>
+            <th style="color: #730075; font-size: 1em; ">ِِThe required mark</th>
+            <th style="color: #730075; font-size: 1em; ">ِِAccepted or Rejected</th>
+            <th style="color: #730075; font-size: 1em; ">Delete</th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            var tm = "#myModal" + item.Std_ScholarshipId;
+            var mid = "myModal" + item.Std_ScholarshipId;
+            <div id="@mid" class="modal fade">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete Scholarship</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete these Records?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input asp-action="Delet" asp-route-id="@item.Std_ScholarshipId" type="submit" class="btn btn-danger" value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+               
+
+            <tr>
+
+                <td> @Html.DisplayFor(modelItem => item.scholarship.Description) </td>
+                <td> @Html.DisplayFor(modelItem => item.scholarship.Specialize_Name) </td>
+                <td> @Html.DisplayFor(modelItem => item.scholarship.type) </td>
+                <td> @Html.DisplayFor(modelItem => item.scholarship.Level) </td>
+                <td> @Html.DisplayFor(modelItem => item.student.FirstName)  </td>
+                <td> @Html.DisplayFor(modelItem => item.student.LastName)  </td>
+                <td>
+
+                    @if (item.student.Average == 0)
+                    {
+                        <span class="text-danger"> He did not enter it</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.student.Average)
+
+
+                    }
+                </td>
+                <td> @Html.DisplayFor(modelItem => item.Date_Log_Scholarship.Date)  </td>
+                <td>
+                    @if (item.scholarship.Level == 0)
+                    {
+
+
+                        <span>
+                            National Examination Mark:
+                        </span>
+                        @if (item.student.National_examination_mark == 0)
+                        {
+                            <span class="text-danger">  He did not enter it</span>
+                        }
+                        else
+                        {<span>
+                                @Html.DisplayFor(modelItem => item.student.National_examination_mark)
+                            </span>
+                        }
+
+                    }
+                    else
+                    {
+
+                        <span>
+                            Baccalaureate Mark:
+                        </span>
+                        @if (item.student.Baccalaureate_mark == 0)
+                        {
+                            <span class="text-danger">  He did not enter it</span>
+                        }
+                        else
+                        {<span>
+                                @Html.DisplayFor(modelItem => item.student.Baccalaureate_mark)
+                            </span>
+                        }
+                    }
+                </td>
+                <td>
+                    @if (item.Taken == false)
+                    {
+                        <a class="btn btn-danger" asp-action="Lockunlock" asp-route-id="@item.Std_ScholarshipId">
+                            <i class="fas fa-close"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success" asp-action="Lockunlock" asp-route-id="@item.Std_ScholarshipId">
+                            <i class="fas fa-check"></i>
+                        </a>
+                    }
+
+
+                </td>
+                <td style="width:15px">
+                    @*<a asp-action="Delet" class="btn btn-danger text-white confiermDelation" asp-route-id="@item.Std_ScholarshipId"><i class="fa-solid fa-trash-can"></i></a>*@
+                    <a href="#deleteEmployeeModal" class="delete btn text-white border-dark" data-target="@tm" data-toggle="modal" title="Delete"><i style="color:red ;" class="bx bxs-trash"></i></a>
+
+                </td>
+            </tr>
+        }
+    </table>
+
+        }
+    </div>
+
+
+
+</div>

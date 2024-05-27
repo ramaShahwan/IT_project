@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "dgSpecHash": "h2ZjpAdvy6HXDJmeDku6M1SWp9VcS1e03KVPWcmy3bJij1PhBGJm73xsyV6GiLxnkFleDAFHzXoDf8K2KTP0IA==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Asus\\Desktop\\ITE_Project\\ITE_Project\\learnIte\\learnIte.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.CodeAnalysis.Common.3.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.common/3.8.0/microsoft.codeanalysis.common.3.8.0.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.CodeAnalysis.CSharp.3.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp/3.8.0/microsoft.codeanalysis.csharp.3.8.0.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.Data.SqlClient.2.0.1' from 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient/2.0.1/microsoft.data.sqlclient.2.0.1.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.Common' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.common/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.Common"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.Data.SqlClient' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient/index.json'.",
+      "libraryId": "Microsoft.Data.SqlClient"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'System.Collections.Immutable' from remote source 'https://api.nuget.org/v3-flatcontainer/system.collections.immutable/index.json'.",
+      "libraryId": "System.Collections.Immutable"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.Common' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.common/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.Common"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.CSharp.Workspaces' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp.workspaces/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.CSharp.Workspaces"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.CSharp' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.CSharp"
+    }
+  ]
+}

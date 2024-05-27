@@ -1,0 +1,71 @@
+﻿@using ITE_Project.Dto.Stored_ProceduresDto
+@using ITE_Project.Dto.Learn_Track
+@model ITE_Project.Dto.Stored_ProceduresDto.Count_Of_Student_In_LearnTrack_By_DateDto
+<link href="~/css/site.css" rel="stylesheet" />
+<link href="~/styles/css/js/search.css" rel="stylesheet" />
+@{ViewData["Title"] = "CountInLearntrack";
+    List<Learn_TrackDto> learnTrack = new List<Learn_TrackDto>();
+    learnTrack = (List<Learn_TrackDto>)ViewData["learnTrack"];}
+
+
+<div class="whitebg border">
+    <br />
+    <h2 class="text-info">Count of student in learn track</h2>
+<br />
+    <div class="whitebg border">
+        <form asp-controller="LearnTrackEntity" method="get" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row ">
+                <div class="col-6">
+                    <label class="col-form-label" style="color: #730075; font-size: 1.3em; ">Search from Date</label>
+                    <input style="color: #9B54A1;" asp-for="StartDate" placeholder="From" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="col-6">
+                    <label class="col-form-label" style="color: #730075; font-size: 1.3em; ">To Date</label>
+                    <input style="color: #9B54A1;" asp-for="EndDate" placeholder="To" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <label asp-for="LearnTrackName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+
+                <div class="form col-12">
+
+                    <select id="LearnTrackList" asp-for="@Model.LearnTrackId" style="color: #9B54A1;" class="nn">
+                        @foreach (var item in learnTrack)
+                        {
+                            <option value="@item.LearnTrackId">@item.LearnTrackName</option>
+                        }
+                    </select>
+
+                    <input type="submit" class="bb" value="Search" asp-action="GetCountOfStudentByDate" />
+                </div>
+
+            </div>
+        </form>
+        <dl class="row m-4 justify-content-center">
+            <dt class="col-sm-2" style="color: #730075; font-size: 1.0em; ">
+                Count of student
+            </dt>
+            @if (Model != null)
+            {
+                <dd class="col-sm-4">
+                    <div class="form-group row">
+                <input class="form-control" value="@Model.CountOfStudent" style="color: #9B54A1; " readonly />
+                    </div>
+                </dd>
+            }
+        </dl>
+    </div>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

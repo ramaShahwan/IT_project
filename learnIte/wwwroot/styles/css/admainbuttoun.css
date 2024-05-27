@@ -1,0 +1,24 @@
+﻿
+.btn-primary {
+    color: #FFFFFF;
+    background-color: #8950FC;
+    border-color: #8950FC;
+}
+.mm {
+    color: #FFFFFF;
+    background-color: #8950FC;
+    border-color: #8950FC;
+}
+.btn-primary:hover {
+    color: #FFFFFF;
+    background-color: #8950FC;
+    border-color: #8950FC;
+}
+
+.btn.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-light-primary:focus:not(.btn-text), .btn.btn-light-primary.focus:not(.btn-text) {
+    color: #FFFFFF;
+    background-color: #8950FC;
+    border-color: transparent;
+}
+
+

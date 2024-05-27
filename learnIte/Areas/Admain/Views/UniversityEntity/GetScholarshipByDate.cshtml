@@ -1,0 +1,81 @@
+﻿@model List<ITE_Project.Dto.Stored_ProceduresDto.Count_Of_Student_In_Scholarship_By_DateDto>
+@using ITE_Project.Dto.Stored_ProceduresDto
+<link href="~/css/site.css" rel="stylesheet" />
+
+<div class="whitebg border">
+    <br />
+    <h2 class="text-info">Count of student in learn track</h2>
+    <br />
+    <div class="whitebg border">
+        <form method="post" asp-action="GetScholarshipByDate">
+            @{DateTime StartDate = new DateTime(); }
+            @{ DateTime EndDate = new DateTime(); }
+            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                <label asp-for="@StartDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                <input style="color: #9B54A1;" asp-for="@StartDate" placeholder="From" type="date" id="example" class="form-control">
+                <i class="fas fa-calendar input-prefix"></i>
+                <span asp-validation-for="@StartDate" class="text-danger"></span>
+            </div>
+            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                <label asp-for="@EndDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                <input style="color: #9B54A1;" asp-for="@EndDate" placeholder="To" type="date" id="example" class="form-control">
+                <i class="fas fa-calendar input-prefix"></i>
+                <span asp-validation-for="@EndDate" class="text-danger"></span>
+            </div>
+            <input type="submit" value=" search">
+        </form>
+        <link href="~/css/site.css" rel="stylesheet" />
+
+        @if (Model is not null)
+        {
+
+            @if (Model.Count() == 0)
+            {
+                <p class="text-danger"> No Opinion ..</p>
+            }
+            else
+            {
+                <div class="whitebg border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="text-info"> Scholarship List :</h2>
+                            <p class="text-primary">The Number of Scholarship Is: @Model.Count()   </p>
+                        </div>
+
+                    </div>
+                    <div>
+                        <table class="table table-striped border ">
+                            <tr class="table-secondary">
+                                <th style="color: #730075; font-size: 1.3em; ">First Name</th>
+                                <th style="color: #730075; font-size: 1.3em; ">Last Name</th>
+                                <th style="color: #730075; font-size: 1.3em; ">Specialize Name</th>
+                                <th style="color: #730075; font-size: 1.3em; ">Date Log Scholarship</th>
+
+
+                                <th></th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @Html.DisplayFor(m => item.FirstName)</td>
+                                    <td> @Html.DisplayFor(m => item.LastName)</td>
+                                    <td> @Html.DisplayFor(m => item.Specialize_Name)</td>
+                                    <td> @Html.DisplayFor(m => item.Date_Log_Scholarship)</td>
+
+                                </tr>
+                            }
+                        </table>
+
+                    </div>
+
+
+
+                </div>
+            }
+        }
+    </div>
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ITE_Project.Dto/1.0.0": {
+        "runtime": {
+          "ITE_Project.Dto.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ITE_Project.Dto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

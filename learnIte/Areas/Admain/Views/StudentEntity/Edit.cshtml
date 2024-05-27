@@ -1,0 +1,102 @@
+﻿@model ITE_Project.Dto.Student.StudentDto
+
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2 class="text-info">Edit Student</h2>
+<br />
+<form asp-action="Edit" method="post" class="col-12">
+    <div class="whitebg border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(m => m.StudentId)
+        @Html.HiddenFor(m => m.UserId)
+        @Html.HiddenFor(m => m.Baccalaureate_mark)
+        @Html.HiddenFor(m => m.National_examination_mark)
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FirstName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="FirstName" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="LastName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="LastName" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Country" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Country" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Address" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Address" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Phone" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Phone" style="color: #9B54A1;" class="form-control" required />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Average" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Average" style="color: #9B54A1;" class="form-control" required />
+                <span asp-validation-for="Average" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-2">
+                <label asp-for="Birthday" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input style="color: #9B54A1;" asp-for="Birthday" placeholder="From" type="date" id="example" class="form-control">
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_UpdateAndBackToListButtonParital" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

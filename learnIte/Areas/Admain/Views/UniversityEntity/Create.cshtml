@@ -1,0 +1,48 @@
+﻿@model ITE_Project.Dto.University.AddUniversityDto
+
+<link href="~/css/site.css" rel="stylesheet" />
+<br />
+<h2 class="text-info">Create University</h2>
+
+<br />
+<div id="addEmployeeModal" class="whitebg border">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add University</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="University_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input asp-for="University_Name" class="form-control" style="color: #9B54A1;" required />
+                        <span asp-validation-for="University_Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="University_Address" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input asp-for="University_Address" class="form-control" style="color: #9B54A1;" required />
+                        <span asp-validation-for="University_Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="University_Country" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input asp-for="University_Country" class="form-control" style="color: #9B54A1;" required />
+                        <span asp-validation-for="University_Country" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="University_Phone" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input asp-for="University_Phone" class="form-control" style="color: #9B54A1;" required />
+                        <span asp-validation-for="University_Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <partial name="_CreateAndBackToListButtonParial" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

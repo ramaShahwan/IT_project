@@ -1,0 +1,57 @@
+﻿@model List<ITE_Project.Dto.Std_Scholarship.Std_ScholarshipDto>
+@using ITE_Project.Dto.Std_Scholarship
+
+<link href="~/css/site.css" rel="stylesheet" />
+
+
+
+
+<div class="whitebg border">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-info"> Scholarship List</h2>
+            <p class="text-primary">The Number of Scholarshipes Is: @Model.Count()   </p>
+        </div>
+        <div class="col-4 text-right">
+           
+        </div>
+    </div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p class="text-danger"> No Scholarshipes ..</p>
+        }
+        else
+        {
+
+            <table class="table table-striped border ">
+                <tr class="table-secondary">
+                    @*<th style="color: #730075; font-size: 1.3em; ">Type  </th>
+        <th style="color: #730075; font-size: 1.3em; ">Level</th>
+        <th style="color: #730075; font-size: 1.3em; ">Specialize</th>*@
+                    <th style="color: #730075; font-size: 1.3em; ">Date Log Scholarship</th>
+                    <th style="color: #730075; font-size: 1.3em; ">First Name</th>
+                    <th style="color: #730075; font-size: 1.3em; ">University</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                @*<td> @Html.DisplayFor(m => item.scholarship.type)</td>
+        <td> @Html.DisplayFor(m => item.scholarship.Level)</td>
+        <td> @Html.DisplayFor(m => item.scholarship.Specialize_Name)</td>*@
+                <td> @Html.DisplayFor(m => item.Date_Log_Scholarship)</td>
+                <td> @Html.DisplayFor(m => item.student.FirstName)</td>
+                <td> @Html.DisplayFor(m => item.scholarship.University.University_Name)</td>
+                <td style="width:15px">
+                </td>
+            </tr>
+                }
+            </table>
+
+        }
+    </div>
+
+
+
+</div>

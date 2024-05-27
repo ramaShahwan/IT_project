@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "dgSpecHash": "fPQKATeu+94tWx+jcYzU0mJZr2O/pvaBpvUvpIUjg873gNMCVtewjOmIXlz0Wx0VziHVRJiMaKjSz+Z3YU5slg==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Asus\\Desktop\\ITE_Project\\ITE_Project\\MtDbProject\\MyDbProject.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.CodeAnalysis.CSharp.Workspaces.3.8.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp.workspaces/3.8.0/microsoft.codeanalysis.csharp.workspaces.3.8.0.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'Microsoft.CodeAnalysis.Common.3.7.0' from 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.common/3.7.0/microsoft.codeanalysis.common.3.7.0.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'System.Collections.Immutable.1.7.0' from 'https://api.nuget.org/v3-flatcontainer/system.collections.immutable/1.7.0/system.collections.immutable.1.7.0.nupkg'.\r\nAn error occurred while sending the request.\r\n  The remote name could not be resolved: 'api.nuget.org'"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.CSharp' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.CSharp"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.Data.SqlClient' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.data.sqlclient/index.json'.",
+      "libraryId": "Microsoft.Data.SqlClient"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'System.Collections.Immutable' from remote source 'https://api.nuget.org/v3-flatcontainer/system.collections.immutable/index.json'.",
+      "libraryId": "System.Collections.Immutable"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.CSharp.Workspaces' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.csharp.workspaces/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.CSharp.Workspaces"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Failed to retrieve information about 'Microsoft.CodeAnalysis.Common' from remote source 'https://api.nuget.org/v3-flatcontainer/microsoft.codeanalysis.common/index.json'.",
+      "libraryId": "Microsoft.CodeAnalysis.Common"
+    }
+  ]
+}

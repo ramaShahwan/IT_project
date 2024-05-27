@@ -1,0 +1,105 @@
+﻿@using ITE_Project.Dto.Stored_ProceduresDto
+@using ITE_Project.Dto.Learn_Track
+@model IEnumerable<ITE_Project.Dto.Stored_ProceduresDto.Information_Of_Student_In_LearnTrack_By_DateDto>
+@{
+    ModelDto dto = new ModelDto();
+
+}
+@{ViewData["Title"] = "InfoInLearntrack";
+    List<Learn_TrackDto> learnTrack = new List<Learn_TrackDto>();
+    learnTrack = (List<Learn_TrackDto>)ViewData["learnTrack"];}
+<link href="~/css/site.css" rel="stylesheet" />
+<link href="~/styles/css/js/search.css" rel="stylesheet" />
+
+<div class="whitebg border">
+    <br />
+    <h4 class="text-info">The number and data of students registered on the chosen educational path between a certain period of time</h4>
+    <br />
+    <div class="whitebg border">
+        <form asp-controller="LearnTrackEntity" method="get" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row ">
+
+                <div class="col-6">
+                    <label class="col-form-label" style="color: #730075; font-size: 1.3em; ">Search from Date</label>
+                    <input style="color: #9B54A1;" asp-for="@dto.StartDate" placeholder="From" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                    <span asp-validation-for="@dto.StartDate" class="text-danger"></span>
+                </div>
+                <div class="col-6">
+                    <label class="col-form-label" style="color: #730075; font-size: 1.3em; ">To Date</label>
+                    <input style="color: #9B54A1;" asp-for="@dto.EndDate" placeholder="To" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                    <span asp-validation-for="@dto.EndDate" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <label asp-for="@dto.LearnTrackName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+
+                <div class="form col-12">
+
+                    <select id="LearnTrackList"  asp-for="@dto.LearnTrackId" style="color: #9B54A1;" class="nn">
+                        @foreach (var item in learnTrack)
+                        {
+                            <option value="@item.LearnTrackId">@item.LearnTrackName</option>
+                        }
+                    </select>
+
+                    <input type="submit" class="bb" value="Search" asp-action="InfoStudInLearntrack"  />
+                </div>
+               
+            </div>
+        </form>
+        <dl class="col-12 m-4 justify-content-center">
+
+            @if (Model != null)
+            {
+            <dt>
+                <div class="whitebg border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="text-info"> Student List</h2>
+                            <p class="text-primary"> Number of students are: @Model.Count()   </p>
+                        </div>
+
+                    </div>
+                    <div>
+                        @if (Model.Count() == 0)
+                        {
+                        <p class="text-danger">There are no students who have registered for this course at this time</p>
+                        }
+                        else
+                        {
+
+                            <table class="table table-striped border ">
+                                <tr class="table-secondary">
+                                    <th style="color: #730075; font-size: 1.3em; ">First name  </th>
+                                    <th style="color: #730075; font-size: 1.3em; ">Last name</th>
+                                    <th style="color: #730075; font-size: 1.3em; ">Email</th>
+
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td> @Html.DisplayFor(m => item.FirstName)</td>
+                                        <td> @Html.DisplayFor(m => item.LastName)</td>
+                                        <td> @Html.DisplayFor(m => item.Email)</td>
+
+                                    </tr>
+                                }
+                            </table>
+
+                        }
+                    </div>
+
+                </div>
+            </dt>
+            }
+        </dl>
+    </div>
+
+</div>

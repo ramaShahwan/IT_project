@@ -1,0 +1,79 @@
+﻿<link href="~/css/site.css" rel="stylesheet" />
+@model List<ITE_Project.Dto.Learn_Track.Learn_TrackDto>
+<div class="whitebg border">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-info"> Learn Track List</h2>
+            <p class="text-primary">The Number of Learn Track Is: @Model.Count()   </p>
+        </div>
+        <div class="col-4 text-right">
+            <partial name="_CreateButtonPartial" />
+
+          </div>
+    </div>
+    <div class="m-2 text-right">
+        <a class="btn btn-primary" asp-action="CountInSpezialise">
+            <i class="bx bx-album"></i>&nbsp;
+            Number of registered students by specialization
+        </a>
+        <a class="btn btn-primary" asp-action="CountInLearntrack">
+            <i class="bx bx-accessibility"></i>&nbsp;
+            Number of registered students
+        </a>
+    </div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+        <p class="text-danger"> No Learn Track yat ..</p>
+        }
+        else
+        {
+
+    <table class="table table-striped border ">
+        <tr class="table-secondary">
+            <th style="color: #730075; font-size: 1.3em; ">Name  </th>
+            <th style="color: #730075; font-size: 1.3em; ">Description</th>
+            <th style="color: #730075; font-size: 1.3em; ">Specialize </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            var mid = "myModal" + item.LearnTrackId;
+            <div id="@mid" class="modal fade">
+
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete LearnTrack</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete these Records?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                <input asp-action="Delet" asp-route-id="@item.LearnTrackId" type="submit" class="btn btn-danger" value="Delete">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <tr>
+                <td> @Html.DisplayFor(m => item.LearnTrackName)</td>
+                <td> @Html.DisplayFor(m => item.Description)</td>
+                <td> @Html.DisplayFor(m => item.Specialize_Name)</td>
+                <td style="width:15px">
+                    <partial name="_OpreationButtonPartial" model="item.LearnTrackId"/>
+                </td>
+            </tr>
+        }
+    </table>
+
+        }
+    </div>
+
+
+
+</div>
+

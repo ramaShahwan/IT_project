@@ -1,0 +1,109 @@
+﻿footer {
+    background-color: #708090;
+}
+
+.footer-nav {
+    border-bottom: 1px solid hsl(0, 0%, 27%);
+}
+
+    .footer-nav .container {
+        display: grid;
+        align-items: center;
+        grid-template-columns: repeat(3,450px);
+        gap: 0,5rem;
+        padding: 20px 50px;
+        
+    }
+
+.footer-nav-list:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 23px;
+}
+
+.footer-nav .nav-title {
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    border-bottom: 2px solid hsl(353, 100%, 78%);
+}
+.nav-title {
+    font-size: 3.7rem;
+}
+    .footer-nav-item {
+    padding: 3px 0;
+}
+
+    .footer-nav-link,
+    .footer-nav-item .content {
+        width: max-content;
+        color: white;
+        font-size: 0.88rem;
+      
+    }
+
+        .footer-nav-link:hover {
+            color: hsl(353, 100%, 78%);
+        }
+
+.footer-nav-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+    .footer-nav-item .content {
+        font-style: normal;
+        margin-bottom: 5px;
+    }
+
+    .footer-nav-item .icon-box {
+        color: white;
+        font-size: 25px;
+    }
+
+        .footer-nav-item .icon-box ion-icon {
+            --ionicon-stroke-width: 30px;
+        }
+
+.social-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+    .social-link .footer-nav-link {
+        font-size: 25px;
+    }
+
+.footer-bottom {
+  
+    text-align: center;
+}
+
+
+.copyright {
+    color: white;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 1.2px;
+}
+
+    .copyright a {
+        display: inline;
+        color: inherit;
+    }
+

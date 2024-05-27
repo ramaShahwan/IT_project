@@ -1,0 +1,140 @@
+﻿<link href="~/css/site.css" rel="stylesheet" />
+@model List<ITE_Project.Dto.Opinion.OpinionDto>
+@*@{AddOpinionDto add = new AddOpinionDto();}
+<div id="addEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="Create">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                      <label asp-for="@add.Name"style="color: #730075; font-size: 1.3em; "></label>
+                            <input asp-for="@add.Name" class="form-control" />
+                            <span asp-validation-for="@add.Name" class="text-danger"></span>
+                        </div>
+                    <div class="form-group">
+                        
+                            <label asp-for="@add.Email"  style="color: #730075; font-size: 1.3em; "></label>
+                            <input asp-for="@add.Email" class="form-control" />
+                            <span asp-validation-for="@add.Email" class="text-danger"></span>
+                      
+                    </div>
+                    <div class="form-group">
+                        
+                            <label asp-for="@add.Message" style="color: #730075; font-size: 1.3em; "></label>
+                            <textarea asp-for="@add.Message" class="form-control"></textarea>
+                            <span asp-validation-for="@add.Message" class="text-danger"></span>
+                       
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                   <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                   <input type="submit" class="btn btn-primary form-control text-white" value="Create" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>*@
+
+<div class="whitebg border">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-info"> Opinion List</h2>
+            <p class="text-primary">The Number of Opinion Is: @Model.Count()   </p>
+        </div>
+        <div class="col-4 text-right">
+            <partial name="_CreateButtonPartial" />
+        </div>
+    </div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+            <p class="text-danger"> No Opinion ..</p>
+        }
+        else
+        {
+
+            <table class="table table-striped border ">
+                <tr class="table-secondary">
+                    <th style="color: #730075; font-size: 1.3em; ">
+                        Name
+                    </th>
+                    <th style="color: #730075; font-size: 1.3em; ">
+                        Email
+                    </th>
+                    <th style="color: #730075; font-size: 1.3em; ">
+                        Massage
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    var mid = "myModal" + item.OpinionsId;
+                    <div id="@mid" class="modal fade">
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Opinion</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete these Records?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input asp-action="Delet" asp-route-id="@item.OpinionsId" type="submit" class="btn btn-danger" value="Delete">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Message)
+                        </td>
+                        <td style="width:15px">
+                            <partial name="_OpreationButtonPartial" model="item.OpinionsId" />
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        }
+        <div class="justify-content-center">
+
+
+            @*<button asp-route-p="2" class="btn btn-outline-primary"> <pagination page-count="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">1</pagination></button>*@
+
+
+
+            @*<cs-pager cs-paging-pagesize="@ViewBag.PageRange"ViewBag.PageNumber
+                cs-paging-pagenumber="@ViewBag.PageNumber"
+                cs-paging-totalitems="@ViewBag.T                       otalPages"
+                cs-pagenumber-param="@ViewBag.PageNumber"
+                asp-controller="YourController"
+                asp-action="YourAction"></cs-pager>*@
+
+        </div>
+    </div>
+
+
+
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

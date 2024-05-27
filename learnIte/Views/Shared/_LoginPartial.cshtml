@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MyTables.Entities
+@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+<ul class="">
+
+    <li>
+        <a style="color: #8a84e2ff; " title="Manage">hi @User.Identity.Name</a>
+    </li>
+    @if (!User.IsInRole(SD.StudentUser))
+    {
+        @if (UserManager.GetUserAsync(User).Result.profilePicture != null)
+        {
+            <li> <a asp-area="Identity" asp-page="/Account/Manage/Index"><img width="40" height="40" class="rounded-circle" alt="profile" src="data:image;base64,@System.Convert.ToBase64String(UserManager.GetUserAsync(User).Result.profilePicture)" /></a></li>
+
+        }
+        else
+        {
+
+            <li><a asp-area="Identity" asp-page="/Account/Manage/Index"><img width="40" height="40" class="rounded-circle" alt="profile" src="~/images/portfolio/profile.jpg" /></a></li>
+
+        }
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+            </form>
+        </li>
+
+    }
+
+</ul> }
+        else @*<a asp-area="Identity" asp-page="/Account/Register">Register</a>*@
+        { <ul class="">
+    <li class="">
+       
+            <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+   
+    <li class="">
+        <div class="dropdown show ">
+            <a class="dropdown-toggle text-white nav-link" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Register
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color:black">
+                <a class="dropdown-item nav-link" asp-area="Identity" asp-page="/Account/Register" asp-route-id="1">Student</a>
+                <a class="dropdown-item nav-link" asp-area="Identity" asp-page="/Account/Register" asp-route-id="0">University</a>
+            </div>
+        </div>
+    </li>
+
+</ul>
+        }
+

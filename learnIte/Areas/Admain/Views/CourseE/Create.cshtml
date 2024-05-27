@@ -1,0 +1,63 @@
+﻿@model ITE_Project.Dto.Course.AddCourseDto
+@using ITE_Project.Dto.Course
+    <link href="~/css/site.css" rel="stylesheet" />
+    <br />
+    <h2 class="text-info">Create Course</h2>
+  
+    <br />
+    <div id="addEmployeeModal" class="whitebg border">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Course</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label asp-for="CourseName" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                            <input asp-for="CourseName" class="form-control" style="color: #9B54A1;" required />
+                            <span asp-validation-for="CourseName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="corse_descraption" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                            <input asp-for="corse_descraption" class="form-control" style="color: #9B54A1;" required />
+                            <span asp-validation-for="corse_descraption" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Language_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                            <select asp-for="Language_Name" style="color: #9B54A1;" class="form-control" asp-items="Html.GetEnumSelectList<Language>()" required>
+                            </select><label class="text-info">Choose The Language Of The Course </label>
+                            <span asp-validation-for="Language_Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Level_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                            <select asp-for="Level_Name" style="color: #9B54A1;" class="form-control" asp-items="Html.GetEnumSelectList<Level>()" required>
+                            </select><label class="text-info"> Choose The Level Of The Course</label>
+                            <span asp-validation-for="Level_Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="URLCourse" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                            <input asp-for="URLCourse" class="form-control" style="color: #9B54A1;" required />
+                            <span asp-validation-for="URLCourse" class="text-danger"></span>
+                        </div>
+                        @*<div class="form-group">
+            <label asp-for="Photo" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            <div class="custom-file">
+                <input type="file" accept="image/*" asp-for="Photo" class="custom-file-input" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+        </div>*@
+                    </div>
+                        <div class="modal-footer">
+                            <partial name="_CreateAndBackToListButtonParial" />
+                        </div>
+</form>
+            </div>
+        </div>
+    </div>
+    
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }

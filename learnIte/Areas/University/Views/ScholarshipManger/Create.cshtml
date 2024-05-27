@@ -1,0 +1,81 @@
+﻿@model ITE_Project.Dto.Scholarship.AddScholarshipDto
+@using ITE_Project.Dto.Scholarship
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    var reqUrl = ViewContext.RouteData.Values["id"];
+ }
+    <br />
+    <h2 class="text-info">Create Scholarship </h2>
+
+    <br />
+    <div class="whitebg border row">
+        <div class="col-8  border-right border-primary">
+            <form asp-action="Create" method="post" class="col-12">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input type="hidden" asp-for="UniversityId" value="@reqUrl" class="form-control" style="color: #9B54A1;" required />
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Scholarship </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Description" class="col-form-label" style="color: #730075; font-size: 1.3em; "> </label>
+                        <input asp-for="Description" class="form-control" style="color: #9B54A1;" required />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Specialize_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <select asp-for="Specialize_Name" style="color: #9B54A1;" class="form-control" asp-items="Html.GetEnumSelectList<Specialize>()" required>
+                        </select><label class="text-info">Choose The Specialize Of The Scholarship </label>
+                        <span asp-validation-for="Specialize_Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Level" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <select asp-for="Level" style="color: #9B54A1;" class="form-control" asp-items="Html.GetEnumSelectList<ScholarshipLevel>()" required>
+                        </select><label class="text-info"> Choose The Level Of Scholarship</label>
+                        <span asp-validation-for="Level" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="type" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <select asp-for="type" style="color: #9B54A1;" class="form-control" asp-items="Html.GetEnumSelectList<Scholarshiptype>()" required>
+                        </select><label class="text-info"> Choose The Type Of Scholarship</label>
+                        <span asp-validation-for="type" class="text-danger"></span>
+                    </div>
+                    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                        <label asp-for="StartDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input style="color: #9B54A1;" asp-for="StartDate" placeholder="From" type="date" id="example" class="form-control">
+                        <label class="text-info" for="example">Scholarship Start From...</label>
+                        <i class="fas fa-calendar input-prefix"></i>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                        <label asp-for="EndDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+                        <input style="color: #9B54A1;" asp-for="EndDate" placeholder="To" type="date" id="example" class="form-control">
+                        <label class="text-info" for="example">Scholarship End in...</label>
+                        <i class="fas fa-calendar input-prefix"></i>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <partial name="_CreateAndBackToListButtonParial" />
+                </div>
+            </form>
+        </div>
+        <div class="col-5 offset-3">
+
+        </div>
+    </div>
+
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        // Data Picker Initialization
+        $('.datepicker').datepicker({
+            inline: true
+        });
+    </script>

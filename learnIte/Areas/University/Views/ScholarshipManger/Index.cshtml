@@ -1,0 +1,93 @@
+﻿
+@model List<ITE_Project.Dto.Scholarship.ScholarshipDto>
+
+<link href="~/css/site.css" rel="stylesheet" />
+
+
+
+<div class="whitebg border">
+    <div class="row">
+        <div class="col-8">
+            
+                
+          
+            <h3 class="text-info">The name of the university is:<strong>@Model[0].University.University_Name</strong> </h3>
+            <p class="text-primary">The Number of Scholarshipes Is: @Model.Count()   </p>
+        </div>
+        <div class="col-4 text-right">
+            <a class="btn btn-primary" asp-action="Create" asp-route-id="@Model[0].UniversityId"><i class="fa-solid fa-plus"></i>&nbsp; Create New</a>
+        </div>
+    </div>
+    <div>
+        @if (Model.Count() == 0)
+        {
+        <p class="text-danger"> No Scholarshipes Yet..</p>
+        }
+        else
+        {
+
+    <table class="table table-striped border ">
+        <tr class="table-secondary">
+            <th style="color: #730075; font-size: 1.3em; ">Type  </th>
+            <th style="color: #730075; font-size: 1.3em; ">Specialize</th>
+            <th style="color: #730075; font-size: 1.3em; ">Description</th>
+            <th style="color: #730075; font-size: 1.3em; ">Level</th>
+            <th style="color: #730075; font-size: 1.3em; ">University</th>
+            <th style="color: #730075; font-size: 1.3em; ">StartDate</th>
+            <th style="color: #730075; font-size: 1.3em; ">EndDate</th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        { var tm = "#myModal" + item.ScholarshipId;
+          var mid = "myModal" + item.ScholarshipId;
+
+        <div id="@mid" class="modal fade">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Delete Scholarship</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete these Records?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input asp-action="Delet" asp-route-id="@item.ScholarshipId" type="submit" class="btn btn-danger" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.type) </td>
+            <td> @Html.DisplayFor(modelItem => item.Specialize_Name) </td>
+            <td> @Html.DisplayFor(modelItem => item.Description)  </td>
+            <td> @Html.DisplayFor(modelItem => item.Level)</td>
+            <td> @Html.DisplayFor(modelItem => item.University.University_Name)  </td>
+            <td> @Html.DisplayFor(modelItem => item.StartDate)</td>
+            <td> @Html.DisplayFor(modelItem => item.EndDate)   </td>
+
+            <td style="width:15px">
+               
+
+                <div class="btn-group" role="group">
+                    <a asp-action="Edit" class="btn text-white border-dark" asp-route-id="@item.ScholarshipId" title="Edit"><i class="bx bxs-edit-alt" style="color:blueviolet"></i></a>
+                    <a href="#deleteEmployeeModal" class="delete btn text-white border-dark" data-target="@tm" data-toggle="modal" title="Delete"><i style="color:red ;" class="bx bxs-trash"></i></a>
+
+                    @*<a asp-action="Delet" class="btn  text-white  border-dark" asp-route-id="@item.ScholarshipId" title="Delete"><i class="bx bx-trash" style="color:red"></i></a>*@
+                </div>
+            </td>
+        </tr>
+    }
+    </table>
+
+        }
+    </div>
+
+
+
+</div>

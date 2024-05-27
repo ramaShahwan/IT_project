@@ -1,0 +1,11 @@
+﻿@model int
+@{
+    var tm = "#myModal" + Model;
+}
+<div class="btn-group" role="group">
+    <a asp-action="Details" class="btn text-white border-dark" asp-route-id="@Model" title="More Details"><i class="bx bx-detail" style="color:forestgreen"></i></a>
+    <a asp-action="Edit" class="btn text-white border-dark" asp-route-id="@Model" title="Edit"><i class="bx bxs-edit-alt" style="color:blueviolet"></i></a>
+    <a data-target="@tm" class="btn  text-white delete border-dark" data-toggle="modal" title="Delete"><i class="bx bx-trash" style="color:red"></i></a>
+</div>
+
+

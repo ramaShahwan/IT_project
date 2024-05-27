@@ -1,0 +1,107 @@
+﻿@model ITE_Project.Dto.Scholarship.ScholarshipDto
+@using ITE_Project.Dto.Scholarship
+<link href="~/css/site.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2 class="text-info">Edit Scholarship</h2>
+<br />
+<form asp-action="Edit" method="post" class="col-12">
+    <div class="whitebg border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(m => m.ScholarshipId)
+        <input type="hidden" asp-for="UniversityId" />
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="University.University_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="University.University_Name" disabled class="form-control" style="color: #9B54A1;" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Description" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Description" class="form-control" style="color: #9B54A1;" required />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="type" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="type" class="form-control" style="color: #9B54A1;" asp-items="Html.GetEnumSelectList<Scholarshiptype>()" required>
+                </select><label class="text-info"> Please Choose The Type Of The Scholarship</label>
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Specialize_Name" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Specialize_Name" class="form-control" style="color: #9B54A1;" asp-items="Html.GetEnumSelectList<Specialize>()" required>
+                </select><label class="text-info"> Choose The Specialize Of The Scholarship</label>
+                <span asp-validation-for="Specialize_Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Level" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Level" class="form-control" style="color: #9B54A1;" asp-items="Html.GetEnumSelectList<ScholarshipLevel>()" required>
+                </select><label class="text-info"> Choose The Level Of The Scholarship</label>
+                <span asp-validation-for="Level" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+
+            <div class="col-2">
+                <label asp-for="StartDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input style="color: #9B54A1;" asp-for="StartDate" placeholder="From" type="date" id="example" class="form-control">
+                <label class="text-info" for="example">Scholarship Start From...</label>
+                <i class="fas fa-calendar input-prefix"></i>
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-group row">
+
+            <div class="col-2">
+                <label asp-for="EndDate" class="col-form-label" style="color: #730075; font-size: 1.3em; "></label>
+            </div>
+            <div class="col-5">
+                <input style="color: #9B54A1;" asp-for="EndDate" placeholder="From" type="date" id="example" class="form-control">
+                <label class="text-info" for="example">Scholarship End in...</label>
+                <i class="fas fa-calendar input-prefix"></i>
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_UpdateAndBackToListButtonParital" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

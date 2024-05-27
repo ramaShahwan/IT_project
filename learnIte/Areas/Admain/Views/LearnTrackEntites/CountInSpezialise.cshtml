@@ -1,0 +1,43 @@
+﻿@model ITE_Project.Dto.Stored_ProceduresDto.Count_Of_Student_In_Specialize_Name_Of_LearnTrackDto
+@using ITE_Project.Dto.Learn_Track
+@{int? id = 0;}
+
+
+<link href="~/styles/css/js/search.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+
+
+
+
+    <div class="whitebg border">
+        <h4 class="text-info"> The number of students who registered on educational tracks, classified by specialization</h4>
+        <hr />
+        <div class="row">
+
+            <form asp-controller="LearnTrackEntity" method="get" class="col-12">
+
+                <div class="form">
+                    <select id="Level_List" class=" nn" asp-items="Html.GetEnumSelectList<Specialize>()" asp-for="@id"></select>
+                    <input type="submit" class="bb" value="Search" asp-action="CountInSpecialiseName" />
+
+                </div>
+            </form>
+            <div  class="row m-2">
+                
+                    <div class="col-6" style="color: #730075; font-size: 1.0em; ">
+                        <div class="row">The number of students who registered is:</div>
+                    </div>
+                    @if (Model != null)
+                    {
+                        <div class="col-4">
+                            <div class="form-group ">
+
+                                <input class="form-control" value="@Model.Count_Of_Student" style="color: #9B54A1; " readonly />
+                            </div>
+                        </div>
+                    }
+               
+            </div>
+    </div>
+
+    </div> 

@@ -1,0 +1,279 @@
+﻿@model List<ITE_Project.Dto.Scholarship.ScholarshipDto>
+@using ITE_Project.Dto.Student
+@using ITE_Project.Dto.Stored_ProceduresDto
+@{
+    StudentDto Dto = (StudentDto)ViewData["Student"];
+
+}
+
+@{
+    List<Search_Scholarship_By_Spec_UniverDto> Scholarships = new List<Search_Scholarship_By_Spec_UniverDto>();
+    Scholarships = (List<Search_Scholarship_By_Spec_UniverDto>)ViewData["Scholarship"];
+}
+<html>
+<head>
+    <title>Courses</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Elearn project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/styles/courses.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/courses_responsive.css">
+    <link href="~/styles/css/admainbuttoun.css" rel="stylesheet" />
+    <link href="~/css/Temp.css" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Home -->
+
+    <div class="home">
+
+        <div class="home_background parallax_background parallax-window" data-parallax="scroll" data-image-src="../images/courses.jpg" data-speed="0.8"></div>
+        <div class="home_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_content text-center">
+                            <div class="home_title">Scholarshipes</div>
+                            <div class="breadcrumbs">
+                                <ul>
+                                    <li><a href="Index">Home</a></li>
+                                    <li>Scholarship</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses -->
+
+    <div class="courses">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="section_title text-center"><h2>Choose your Scholarship</h2></div>
+                    <div class="section_subtitle">Now, through our educational platform, you can register for scholarships offered by the most prestigious universities, as our site acts as a link between you and universities to facilitate the education process for you</div>
+                </div>
+            </div>
+
+            <!-- Course Search -->
+            <div class="row">
+                <div class="col">
+                    <div class="course_search">
+                        <form method="get" asp-controller="Scolership" asp-action="SearchScholar" class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
+
+                            @{int UniversityId = 0; }
+                            @{int Specialize_Name = 0;}
+                           
+                            <div class="col-5">
+                                <select id="scholarship_list" onchange="getCountry();" class="course_input" asp-items="@Html.GetEnumSelectList<ITE_Project.Dto.Scholarship.Specialize>()" asp-for="@Specialize_Name">
+                                    <option>Select Specialize</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <select id="university_list" class="course_input" placeholder="Level" asp-for="@UniversityId">
+                                    <option>Select University</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-4">
+                                <button class="course_button"  type="submit"><span>Search Scholarship</span><span class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Course -->
+            <div class="row featured_row">
+                <div class="col-lg-6 featured_col">
+                    <div class="featured_content">
+                        <div class="featured_header d-flex flex-row align-items-center justify-content-start">
+                            <div class="featured_tag"><a href="#">Featured</a></div>
+                            <div class="featured_price ml-auto">Price: <span>$35</span></div>
+                        </div>
+                        <div class="featured_title"><h3><a href="courses.html">Online Literature Course</a></h3></div>
+                        <div class="featured_text">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Donec vehicula efficitur nibh, in pretium nulla interdum lacus vehicula efficitur nibh, in pretiumvehicula efficitur nibh, in pretium tempus non.</div>
+                        <div class="featured_footer d-flex align-items-center justify-content-start">
+                            <div class="featured_author_image"><img src="~/images/featured_author.jpg" alt=""></div>
+                            <div class="featured_author_name">By <a href="#">James S. Morrison</a></div>
+                            <div class="featured_sales ml-auto"><span>352</span> Sales</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 featured_col">
+
+                    <div class="featured_background" style="background-image:url(../images/featured.jpg)"></div>
+                </div>
+            </div>
+
+            @if (Scholarships is not null)
+
+
+            {<div class="row courses_row">
+
+                    @foreach (var item in Scholarships)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="course">
+                                <div class="course_image"><img src="~/images/course_8.jpg" alt=""></div>
+                                <div class="course_body">
+                                    <div class="course_header d-flex flex-row align-items-center justify-content-start">
+                                    </div>
+                                    <div class="course_text">@item.Description.</div>
+                                    <div class="course_text">@item.Level</div>
+                                    <div class="course_footer d-flex align-items-center justify-content-start">
+                                        <div class="course_author_name"><a>@item.StartDate</a></div>
+                                        <div class="course_sales ml-auto"><span>@item.EndDate</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            }
+            else
+            {
+          <div class="row courses_row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="course">
+                            <div class="course_image"><img src="~/images/course_8.jpg" alt=""></div>
+                            <div class="course_body">
+                                <div class="course_header d-flex flex-row align-items-center justify-content-start">
+                                    <form asp-action="AddToUser" method="post" asp-route-id="@item.ScholarshipId">
+                                        <div class="course_tag">
+                                            <input type="submit" class="btn btn-primary form-control text-white" value="Register Now" />
+                                        </div>
+                                    </form>
+
+                                    <div class="course_price ml-auto"> <span>@item.University.University_Name</span></div>
+                                </div>
+                                <div class="course_text">
+                                    <a href="#editEmployeeModal" class="edit" data-target="#@item.Level" data-toggle="modal">
+                                        Click here to make sure you complete your information before registering
+                                        <i class="material-icons bx bxs-info-circle text-danger" data-toggle="tooltip" title="Complete your information">&#xE254;</i>
+                                    </a>
+                                </div>
+                                <div id="@item.Level" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form asp-action="Edit">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">@Dto.FirstName In order to be able to register, you must make sure that you have completed the following information</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="text" asp-for="@Dto.StudentId" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.LastName" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.Phone" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.Birthday" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.Country" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.Address" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.Country" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.UserId" class="form-control" hidden>
+                                                    <input type="text" asp-for="@Dto.FirstName" class="form-control" hidden>
+                                                    <div class="form-group">
+                                                        <label asp-for="@Dto.Average"></label>
+                                                        <input type="text" asp-for="@Dto.Average" class="form-control" required>
+                                                        <span asp-validation-for="@Dto.Average" class="text-danger"></span>
+                                                    </div>
+                                                    @if (item.Level == 0)
+                                                    {
+                                                        <input type="text" asp-for="@Dto.Baccalaureate_mark" class="form-control" hidden>
+                                                        <div class="form-group">
+                                                            <label asp-for="@Dto.National_examination_mark"></label>
+                                                            <input type="text" asp-for="@Dto.National_examination_mark" class="form-control">
+                                                            <span asp-validation-for="@Dto.National_examination_mark" class="text-danger"></span>
+                                                        </div>}
+                                                    else
+                                                    {
+                                                        <input type="text" asp-for="@Dto.National_examination_mark" class="form-control" hidden>
+                                                        <div class="form-group">
+                                                            <label asp-for="@Dto.Baccalaureate_mark"></label>
+                                                            <input type="text" asp-for="@Dto.Baccalaureate_mark" class="form-control">
+                                                            <span asp-validation-for="@Dto.Baccalaureate_mark" class="text-danger"></span>
+                                                        </div>}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                    <input type="submit" class="btn btn-info" value="Save">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course_title"><h3><a href="courses.html">@item.Specialize_Name</a></h3></div>
+                                <div class="course_text">@item.Description.</div>
+                                <div class="course_text">@item.Level</div><div class="course_footer d-flex align-items-center justify-content-start">
+                                    <div class="course_author_name"><a>@item.StartDate</a></div>
+                                    <div class="course_sales ml-auto"><span>@item.EndDate</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+               
+            </div>}
+            <a asp-action="" asp-route-id="@Model"></a>
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col">
+                    <div class="courses_paginations">
+                        <ul>
+                            <li class="active"><a href="#">01</a></li>
+                            <li><a href="#">02</a></li>
+                            <li><a href="#">03</a></li>
+                            <li><a href="#">04</a></li>
+                            <li><a href="#">05</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+    <script src="/~js/jquery-3.2.1.min.js"></script>
+    <script src="/~styles/bootstrap4/popper.js"></script>
+    <script src="/~styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/~plugins/easing/easing.js"></script>
+    <script src="/~plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="/~js/courses.js"></script>
+</body>
+</html>
+<script>
+    function getCountry() {
+        var options = document.getElementById('scholarship_list').options;
+        var id = options[options.selectedIndex].value;
+        $.ajax({
+            type: "GET",
+            url: "/Scolership/UniversityNameByScholar?id=" + id,
+        }).done(function (data) {
+            console.log(data);
+            $('#university_list').empty();
+            // our ajax call is finished, we have the data returned from the server in a var called data
+            // loop through our returned data and add an option to the select for each province returned
+            $('#university_list').append($('<option>', { value: -1, text: 'Not Found' }));
+            $.each(data, function (i, item) {
+                $('#university_list').append($('<option>', { value: item.universityId, text: item.university_Name }));
+            });
+        });
+    }
+
+</script>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

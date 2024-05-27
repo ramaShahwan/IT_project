@@ -1,0 +1,12 @@
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\bin\Debug\net5.0\ITE_Project.Dto.deps.json
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\bin\Debug\net5.0\ITE_Project.Dto.dll
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\bin\Debug\net5.0\ref\ITE_Project.Dto.dll
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\bin\Debug\net5.0\ITE_Project.Dto.pdb
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.csproj.AssemblyReference.cache
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.AssemblyInfo.cs
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.dll
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ref\ITE_Project.Dto.dll
+C:\Users\USER\source\repos\ITE_Project\ITE_Project.Dto\obj\Debug\net5.0\ITE_Project.Dto.pdb
